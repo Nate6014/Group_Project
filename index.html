@@ -4,9 +4,9 @@
 <head>
   <style type="text/css">
     #map {
-      height: 65%;
-      width: 65%;
-      margin: auto;
+      height: 380px;
+      width: 50%;
+      float: left;
     }
 
     html,
@@ -20,9 +20,13 @@
 
 <body>
   <div id="map"></div>
-  <div id="maps"></div>
 
-  <a id="timelapse-player" data-play="day" target="_blank"></a>
+
+  <iframe id="player" width="50%" name="lkr-timelapse-player-iframe" style="float: right; background-color: black; width:670px; height: 380px;"></iframe>
+
+
+  <div id="playerList"></div>
+
   <script async type="text/javascript" 
   src="https://api.lookr.com/embed/script/player.js"></script>
   

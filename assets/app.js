@@ -105,7 +105,7 @@ function initMap() {
       console.log(long);
 
       var queryURL =
-        `https://webcamstravel.p.mashape.com/webcams/list/nearby=${lat},${long},10?show=webcams%3Aplayer%2Clocation&lang=en`;
+        `https://webcamstravel.p.mashape.com/webcams/list/nearby=${lat},${long},250?show=webcams%3Aplayer%2Clocation&lang=en`;
 
       $.ajax({
         headers: {
@@ -116,9 +116,12 @@ function initMap() {
         success: function (data) {
           console.log(data.result);
           for (i = 0; i < data.result.webcams.length; i++) {
-            var webcamId = data.result.webcams[i].id;
-            $("#timelaspe-player").attr("href", "https://lookr.com/"+webcamId)
-
+            if(data.result.webcams[i].player.live.available===true){
+              var link = data.result.webcams[i].player.live.embed;
+              $("#player").attr("src", link);
+            }
+            link = data.result.webcams[i].player.day.embed;
+            $("#player").attr("src", link);
           }
         }
       });
