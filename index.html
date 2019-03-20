@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <style type="text/css">
     #map {
       height: 380px;
@@ -15,6 +16,10 @@
       margin: 0;
       padding: 0;
     }
+
+    #player{
+      width:50%;
+    }
   </style>
 </head>
 
@@ -24,9 +29,8 @@
 
   <iframe id="player" width="50%" name="lkr-timelapse-player-iframe" style="float: right; background-color: black; width:670px; height: 380px;"></iframe>
 
-
-  <div id="playerList"></div>
-
+  <div id="playerList" style="position: absolute; top: 425px; width:100%; height: 230px; margin: auto;"></div>
+  <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
   <script async type="text/javascript" 
   src="https://api.lookr.com/embed/script/player.js"></script>
   

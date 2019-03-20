@@ -2,9 +2,23 @@ var map;
 var marker;
 var infowindow;
 var messagewindow;
+var newRow = $("<div class='row'>");
+
+var config = {
+  apiKey: "AIzaSyBRNkqdlrKBWMDm1zcDiwHi_OZdZ9TCIQo",
+  authDomain: "group-project-tjm.firebaseapp.com",
+  databaseURL: "https://group-project-tjm.firebaseio.com",
+  projectId: "group-project-tjm",
+  storageBucket: "group-project-tjm.appspot.com",
+  messagingSenderId: "453175291790"
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
 
 
-function addYourLocationButton(map, marker) {
+
+function addYourLocationButton(map) {
   var controlDiv = document.createElement('div');
 
   var firstChild = document.createElement('button');
@@ -66,8 +80,7 @@ function initMap() {
     center: california,
     zoom: 9
   });
-
-  // Try HTML5 geolocation.
+console.log(navigator) 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       var pos = {
@@ -79,7 +92,6 @@ function initMap() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
   } else {
-    // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
@@ -105,7 +117,7 @@ function initMap() {
       console.log(long);
 
       var queryURL =
-        `https://webcamstravel.p.mashape.com/webcams/list/nearby=${lat},${long},250?show=webcams%3Aplayer%2Clocation&lang=en`;
+        `https://webcamstravel.p.mashape.com/webcams/list/nearby=${lat},${long},100/limit=18?show=webcams%3Aplayer%2Clocation&lang=en`;
 
       $.ajax({
         headers: {
@@ -115,14 +127,30 @@ function initMap() {
         url: queryURL,
         success: function (data) {
           console.log(data.result);
+          $("#playerList").append(newRow);
           for (i = 0; i < data.result.webcams.length; i++) {
+            $(".row").append($("<div>").attr("class", "col s1.5").attr("id", "player"+i));
             if(data.result.webcams[i].player.live.available===true){
               var link = data.result.webcams[i].player.live.embed;
               $("#player").attr("src", link);
             }
             link = data.result.webcams[i].player.day.embed;
+            var divLink = data.result.webcams[i].title;
+
+            $("<p>").text(data.result.webcams[i].title);
+            $("#player"+i).text(divLink).css("backgroundColor", "#80deea");
+            $("#player"+i).css("text-align", "center");
+            $("#player"+i).css("margin", "8px");
+            $("#player"+i).attr("link", link)
             $("#player").attr("src", link);
-          }
+            $(document).on("click", "#player"+i, function(){
+              var newLink = $(this).attr("link")
+              console.log(newLink);
+              $("#player").attr("src", newLink);
+
+            });
+            
+          };
         }
       });
 
@@ -131,6 +159,8 @@ function initMap() {
 
   });
 }
+
+
 
 
 
