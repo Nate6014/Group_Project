@@ -3,37 +3,29 @@
 
 <head>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <style type="text/css">
-    #map {
-      height: 380px;
-      width: 50%;
-      float: left;
-    }
-
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
-    #player{
-      width:50%;
-    }
-  </style>
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 
 <body>
-  <div id="map"></div>
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+
+      </div>
+    </nav>
+  </div>
+  <div class="container">
+      <div id="map"></div>
 
 
-  <iframe id="player" width="50%" name="lkr-timelapse-player-iframe" style="float: right; background-color: black; width:670px; height: 380px;"></iframe>
-
-  <div id="playerList" style="position: absolute; top: 425px; width:100%; height: 230px; margin: auto;"></div>
+      <iframe id="player" name="lkr-timelapse-player-iframe"></iframe>
+    </div>
+    <div id="playerList"></div>
+  </div>
   <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
-  <script async type="text/javascript" 
-  src="https://api.lookr.com/embed/script/player.js"></script>
-  
+  <script async type="text/javascript" src="https://api.lookr.com/embed/script/player.js"></script>
+
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVgsGmCxm4XAi46mL8_0EDQAcK1oALSlY&callback=initMap"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
