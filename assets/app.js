@@ -3,9 +3,22 @@ var marker;
 var infowindow;
 var messagewindow;
 var newRow = $("<div class='row'>");
-var userLinks = [];
+var markers = [];
 
+function deleteMarkers() {
+  clearMarkers();
+  markers = [];
+};
 
+function clearMarkers() {
+  setMapOnAll(null);
+}
+
+function setMapOnAll(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  };
+};
 
 function addYourLocationButton(map) {
   var controlDiv = document.createElement('div');
@@ -121,6 +134,12 @@ function initMap() {
       position: event.latLng,
       map: map,
 
+    });
+  markers.push(marker);
+     
+
+    $("input").on("click", function(){
+      deleteMarkers();
     });
 
     google.maps.event.addListener(marker, 'click', function () {

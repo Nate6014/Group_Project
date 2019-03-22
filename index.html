@@ -7,20 +7,23 @@
 </head>
 
 <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a class="brand-logo center">World Webcam Finder</a>
+  <nav>
+    <div class="nav-wrapper">
+      <a class="brand-logo center">World Webcam Finder</a>
 
-      </div>
-    </nav>
+    </div>
+  </nav>
   </div>
   <div class="container">
-      <div id="map" class="z-depth-5"></div>
 
-
-      <iframe id="player" name="lkr-timelapse-player-iframe" class="z-depth-5"></iframe>
+        <input type=button value="Delete Markers">
+    <div id="map" class="z-depth-5">
     </div>
-    <div id="playerList" class="z-depth-5"></div>
+
+
+    <iframe id="player" name="lkr-timelapse-player-iframe" class="z-depth-5"></iframe>
+  </div>
+  <div id="playerList" class="z-depth-5"></div>
   </div>
   <script src="https://www.gstatic.com/firebasejs/5.9.0/firebase.js"></script>
   <script async type="text/javascript" src="https://api.lookr.com/embed/script/player.js"></script>
