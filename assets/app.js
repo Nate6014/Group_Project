@@ -3,6 +3,7 @@ var marker;
 var infowindow;
 var messagewindow;
 var newRow = $("<div class='row'>");
+var userLinks = [];
 
 
 
@@ -80,6 +81,7 @@ function initMap() {
     lng: longitude
   };
 
+ 
 
   if (isNaN(latitude) || isNaN(longitude)) {
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -93,6 +95,7 @@ function initMap() {
       sessionStorage.setItem("log", Lon);
 
       map.setCenter(pos);
+
     }, function () {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -101,8 +104,8 @@ function initMap() {
     map.setCenter(userPos);
     var userLink = sessionStorage.getItem("userLink");
     $("#player").attr("src", userLink);
-
-  }
+    
+  };
 
   var myMarker = new google.maps.Marker({
     map: map,
@@ -118,12 +121,11 @@ function initMap() {
 
     });
 
-    
-
     google.maps.event.addListener(marker, 'click', function () {
       console.log(event);
       var lat = event.latLng.lat();
       var long = event.latLng.lng();
+
       console.log(lat);
       console.log(long);
 
@@ -151,9 +153,8 @@ function initMap() {
             sessionStorage.setItem("userLink", link);
 
           };
-            var divLink = data.result.webcams[i].title;
-            
-            $("<p>").text(data.result.webcams[i].title);
+            var divLink = data.result.webcams[i].title;            
+            $("<p>").text(divLink);
             $("#player" + i).text(divLink).css("backgroundColor", "#80deea");
             $("#player" + i).css("text-align", "center").css("margin", "8px");
             $("#player" + i).attr("link", link)
@@ -161,6 +162,7 @@ function initMap() {
               var newLink = $(this).attr("link")
               console.log(newLink);
               $("#player").attr("src", newLink);
+              userLinks.push(divLink);
 
             });
   
