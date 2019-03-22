@@ -1,19 +1,27 @@
 nav{
-    background-color: deepskyblue;
-    text-align: center
+    background-color: darkblue;
+    text-align: center;
+  
 }
+
 
 #map {
     margin: 5% -10%;
     height: 380px;
     width: 60%;
     float: left;
+  
+  }
+
+  .row .col{
+    border-radius:500px;
   }
 
  
   body {
     height: 100%;
     padding: 0;
+    background-image: radial-gradient(blue, lightblue, royalblue);
   }
 
   #player {
@@ -27,6 +35,8 @@ nav{
   #playerList{
     position: absolute;
     top: 520px;
+    margin-left: 15px;
+    margin-right:15px;
   }
 
 

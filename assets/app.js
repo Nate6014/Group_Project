@@ -67,7 +67,9 @@ function initMap() {
   var california = { lat: 37.4419, lng: -122.1419 };
   map = new google.maps.Map(document.getElementById('map'), {
     center: california,
-    zoom: 9
+    zoom: 9,
+    streetViewControl: false,
+    disableDefaultUI: true
   });
 
 
@@ -130,7 +132,7 @@ function initMap() {
       console.log(long);
 
       var queryURL =
-        `https://webcamstravel.p.mashape.com/webcams/list/nearby=${lat},${long},100/limit=18?show=webcams%3Aplayer%2Clocation&lang=en`;
+        `https://webcamstravel.p.mashape.com/webcams/list/nearby=${lat},${long},150/limit=18?show=webcams%3Aplayer%2Clocation&lang=en`;
 
       $.ajax({
         headers: {
@@ -141,6 +143,9 @@ function initMap() {
         success: function (data) {
           console.log(data.result);
           $("#playerList").append(newRow);
+          $("#playerList").css("border-style", "solid");
+          $("#playerList").css("border-radius", "10px");
+
           for (i = 0; i < data.result.webcams.length; i++) {
             $(".row").append($("<div>").attr("class", "col s1.5").attr("id", "player" + i));
             if (data.result.webcams[i].player.live.available === true) {
@@ -155,7 +160,8 @@ function initMap() {
           };
             var divLink = data.result.webcams[i].title;            
             $("<p>").text(divLink);
-            $("#player" + i).text(divLink).css("backgroundColor", "#80deea");
+            $("#player" + i).text(divLink).css("backgroundColor", "darkblue");
+            $("#player" + i).text(divLink).css("color", "white");
             $("#player" + i).css("text-align", "center").css("margin", "8px");
             $("#player" + i).attr("link", link)
             $(document).on("click", "#player" + i, function () {
