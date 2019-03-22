@@ -4,6 +4,12 @@ nav{
   
 }
 
+input {
+  position: absolute;
+        left: 330px;
+        top: 110px;
+        z-index: 10;
+}
 
 #map {
     margin: 5% -10%;
