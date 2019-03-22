@@ -15,6 +15,7 @@ nav{
 
   .row .col{
     border-radius:500px;
+    cursor: pointer;
   }
 
  
