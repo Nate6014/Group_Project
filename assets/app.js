@@ -12,6 +12,7 @@ function deleteMarkers() {
 
 function clearMarkers() {
   setMapOnAll(null);
+  
 }
 
 function setMapOnAll(map) {
@@ -179,7 +180,7 @@ function initMap() {
           };
             var divLink = data.result.webcams[i].title;            
             $("<p>").text(divLink);
-            $("#player" + i).text(divLink).css("backgroundColor", "darkblue");
+            $("#player" + i).text(divLink).css("backgroundColor", "#666666");
             $("#player" + i).text(divLink).css("color", "white");
             $("#player" + i).css("text-align", "center").css("margin", "8px");
             $("#player" + i).attr("link", link)
